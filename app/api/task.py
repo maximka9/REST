@@ -30,7 +30,7 @@ def create_task(
 @router.get("/tasks/", response_model=list[Task])
 @limiter.limit("100/minute")  # Ограничение на 100 запросов в минуту
 def read_tasks(
-    request: Request,  # Добавьте request
+    request: Request, 
     db: Session = Depends(get_db),
     user: User = Depends(get_current_user)
 ):
@@ -52,7 +52,7 @@ def read_task(
 @router.put("/tasks/{task_id}", response_model=Task)
 @limiter.limit("100/minute")  # Ограничение на 100 запросов в минуту
 def update_task(
-    request: Request,  # Добавьте request
+    request: Request,  
     task_id: int,
     task: TaskCreate,
     db: Session = Depends(get_db),
@@ -69,7 +69,7 @@ def update_task(
 
 @router.delete("/tasks/{task_id}")
 def delete_task(
-    request: Request,  # Добавьте request
+    request: Request,  
     task_id: int,
     db: Session = Depends(get_db),
     user: User = Depends(get_current_user)
